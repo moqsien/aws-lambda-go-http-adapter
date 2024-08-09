@@ -5,20 +5,17 @@ on:
     tags:
       - 'v[0-9]+\.[0-9]+\.[0-9]+'
 
-env:
-  GO_VERSION: '^1.20.4'
-
 jobs:
   test:
     name: 'Test'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
-      - name: 'Setup go ${{ env.GO_VERSION }}'
-        uses: actions/setup-go@v3
+        uses: actions/checkout@v4
+      - name: 'Setup go'
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: 'go.mod'
       - name: 'Test'
         run: 'go test ./...'
 
@@ -29,10 +26,10 @@ jobs:
       - test
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
-      - name: 'Setup go ${{ env.GO_VERSION }}'
-        uses: actions/setup-go@v3
+        uses: actions/checkout@v4
+      - name: 'Setup go'
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: 'go.mod'
       - name: 'Release'
         run: 'GOPROXY=proxy.golang.org go list -m github.com/its-felix/aws-lambda-go-http-adapter@${{ github.ref_name }}'
