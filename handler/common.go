@@ -24,7 +24,11 @@ func buildQuery(rawQuery string, queryParams map[string]string) string {
 	return ""
 }
 
-func buildFullRequestURL(host string, path string, altPath string, query string) string {
+func buildFullRequestURL(host, path, altPath, query string) string {
+	return buildFullRequestURLWithProto("https", host, path, altPath, query)
+}
+
+func buildFullRequestURLWithProto(proto, host, path, altPath, query string) string {
 	rUrl := path
 
 	if rUrl == "" {
@@ -35,7 +39,7 @@ func buildFullRequestURL(host string, path string, altPath string, query string)
 		rUrl = "/" + rUrl
 	}
 
-	rUrl = "https://" + host + rUrl
+	rUrl = proto + "://" + host + rUrl
 
 	if query != "" {
 		rUrl += "?" + query

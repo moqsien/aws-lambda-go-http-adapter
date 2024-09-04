@@ -8,6 +8,7 @@ Simple HTTP adapter for AWS Lambda
 - AWS Lambda Function URL (both normal and streaming)
 - API Gateway (v1)
 - API Gateway (v2)
+- Application Load Balancer
 
 ## Builtin support for these HTTP frameworks:
 - `net/http`
@@ -252,6 +253,7 @@ Once this build-tag is present, the following build-tags are available:
 - `lambdahttpadapter.apigwv1` (enables API Gateway V1 handler)
 - `lambdahttpadapter.apigwv2` (enables API Gateway V2 handler)
 - `lambdahttpadapter.functionurl` (enables Lambda Function URL handler)
+- `lambdahttpadapter.alb` (enables Application Load Balancer handler)
 
 Also note that Lambda Function URL in Streaming-Mode requires the following build-tag to be set:
 - `lambda.norpc`
