@@ -76,6 +76,28 @@ func main() {
 }
 ```
 
+#### Gorilla Mux
+```golang
+package main
+
+import (
+	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/its-felix/aws-lambda-go-http-adapter/adapter"
+)
+
+func main() {
+	r := mux.NewRouter()
+	r.Handle("/ping", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("pong"))
+	}))
+
+	adapter := adapter.NewGorillaMuxAdapter(r)
+}
+```
+
 ### Creating the Handler
 #### API Gateway V1
 ```golang

@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/aws/aws-lambda-go v1.47.0
 	github.com/gofiber/fiber/v2 v2.52.5
+	github.com/gorilla/mux v1.8.1
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/valyala/fasthttp v1.55.0
 )
